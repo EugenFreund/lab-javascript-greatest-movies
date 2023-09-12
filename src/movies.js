@@ -119,20 +119,19 @@ function bestYearAvg(moviesArray) {
         return movie;
     }, {})
 
-    return splitArray
 
-    splitArray.forEach(element => {
-        let sumScore = element.reduce((accumulator, currentValue) => accumulator + currentValue["score"], 0)
-        let bestScoreInYear = sumScore / element.length;
-        let currentYear = element[0]["year"];
+    for(const [key, value] of Object.entries(splitArray)) {
+        let sumScore = value.reduce((accumulator, currentValue) => accumulator + currentValue["score"], 0)
+        let bestScoreInYear = sumScore / value.length;
+        let currentYear = value[0]["year"];
 
         if (bestScoreInYear > bestScoreOverAll){
             bestScoreOverAll = bestScoreInYear
             bestYearOverAll = currentYear
         }
-    });
+    };
     
-    // return `The best year was ${bestYearOverAll} with an average score of ${bestScoreOverAll}`
+    return `The best year was ${bestYearOverAll} with an average score of ${bestScoreOverAll}`
 }
 
 
